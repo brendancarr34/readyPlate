@@ -28,6 +28,10 @@ Create the necessary views and pages required for the app to viably replace an e
 
 One of the biggest problems with spreadsheets is their poor optimization for mobile devices. As most students use their phones to view weekly information, it would be first priority to make the web app easily accessible / viewable on phones. This means developing in a mobile environment first and transitioning that to load correctly on computers. In Chef’s view this is less important because they’ll most likely be using a computer when entering information in as necessary.
 
+### FIGMA LINK
+
+[Here](https://www.figma.com/file/vPHGgbTZqRPHrVcROucokW/Meal-Scheduler?node-id=0%3A1) is the link to the Figma wireframe we've created to help prototype our app.
+
 ### STYLING
 
 Currently using the react-bulma-components to create components from the Bulma CSS package and import them into react.

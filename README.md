@@ -65,6 +65,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-#### npm run storybook
+#### `npm run storybook`
 
 Builds app to react-storybook, which allows you to test multiple compnents individually for bugs and for style matching.

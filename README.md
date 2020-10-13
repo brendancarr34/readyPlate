@@ -27,3 +27,40 @@ Create the necessary views and pages required for the app to viably replace an e
 ##### Optimize the web app for mobile devices
 
 One of the biggest problems with spreadsheets is their poor optimization for mobile devices. As most students use their phones to view weekly information, it would be first priority to make the web app easily accessible / viewable on phones. This means developing in a mobile environment first and transitioning that to load correctly on computers. In Chef’s view this is less important because they’ll most likely be using a computer when entering information in as necessary.
+
+### STYLING
+
+Currently using the react-bulma-components to create components from the Bulma CSS package and import them into react.
+
+### AVAILABLE SCRIPTS
+
+#### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+#### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+#### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+#### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+#### npm run storybook
+
+Builds app to react-storybook, which allows you to test multiple compnents individually for bugs and for style matching.

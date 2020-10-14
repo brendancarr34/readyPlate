@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7468b7e4342d048dd49417b716ec482e",
+    "revision": "1e3e4fd4a1e2e2140d05ea1a50881461",
     "url": "/MealScheduler/index.html"
   },
   {
-    "revision": "558efbd38fbef16ec273",
-    "url": "/MealScheduler/static/css/main.6cccb1d3.chunk.css"
+    "revision": "5603e1234edf2e4c5e4c",
+    "url": "/MealScheduler/static/css/main.b51bc8a8.chunk.css"
   },
   {
-    "revision": "a40062a3da541c66c0c3",
-    "url": "/MealScheduler/static/js/2.d9487bd2.chunk.js"
+    "revision": "c3869585a648c826cb76",
+    "url": "/MealScheduler/static/js/2.a9a47602.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/MealScheduler/static/js/2.d9487bd2.chunk.js.LICENSE.txt"
+    "url": "/MealScheduler/static/js/2.a9a47602.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "558efbd38fbef16ec273",
-    "url": "/MealScheduler/static/js/main.6345f564.chunk.js"
+    "revision": "5603e1234edf2e4c5e4c",
+    "url": "/MealScheduler/static/js/main.166874bb.chunk.js"
   },
   {
     "revision": "62a16748e774ce115a20",

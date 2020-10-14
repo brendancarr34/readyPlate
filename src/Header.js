@@ -18,7 +18,7 @@ function Header() {
         <Nav.Link href="#home">Home</Nav.Link>
         <Nav.Link href="#link">Calendar View</Nav.Link>
       </Nav>
-      <DropdownButton drop='left' variant="secondary" id="dropdown-basic-button" title="Information">
+      <DropdownButton variant="secondary" id="dropdown-basic-button" title="Information">
         <Dropdown.Item disabled='true'>
           <Image src={require("./static/profilepic.png")} width='50px' height='50px' alt='pf'/>
         </Dropdown.Item>

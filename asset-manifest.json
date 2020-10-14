@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/MealScheduler/static/css/main.b51bc8a8.chunk.css",
+    "main.css": "/MealScheduler/static/css/main.1b5532ed.chunk.css",
     "main.js": "/MealScheduler/static/js/main.166874bb.chunk.js",
     "main.js.map": "/MealScheduler/static/js/main.166874bb.chunk.js.map",
     "runtime-main.js": "/MealScheduler/static/js/runtime-main.1d6f3af5.js",
@@ -8,16 +8,16 @@
     "static/js/2.a9a47602.chunk.js": "/MealScheduler/static/js/2.a9a47602.chunk.js",
     "static/js/2.a9a47602.chunk.js.map": "/MealScheduler/static/js/2.a9a47602.chunk.js.map",
     "index.html": "/MealScheduler/index.html",
-    "precache-manifest.620ba5ca65a9a684abea2bc6ed496b78.js": "/MealScheduler/precache-manifest.620ba5ca65a9a684abea2bc6ed496b78.js",
+    "precache-manifest.b02ca0991ce18d95dffd26c57ce52882.js": "/MealScheduler/precache-manifest.b02ca0991ce18d95dffd26c57ce52882.js",
     "service-worker.js": "/MealScheduler/service-worker.js",
-    "static/css/main.b51bc8a8.chunk.css.map": "/MealScheduler/static/css/main.b51bc8a8.chunk.css.map",
+    "static/css/main.1b5532ed.chunk.css.map": "/MealScheduler/static/css/main.1b5532ed.chunk.css.map",
     "static/js/2.a9a47602.chunk.js.LICENSE.txt": "/MealScheduler/static/js/2.a9a47602.chunk.js.LICENSE.txt",
     "static/media/profilepic.png": "/MealScheduler/static/media/profilepic.9acfe78b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1d6f3af5.js",
     "static/js/2.a9a47602.chunk.js",
-    "static/css/main.b51bc8a8.chunk.css",
+    "static/css/main.1b5532ed.chunk.css",
     "static/js/main.166874bb.chunk.js"
   ]
 }

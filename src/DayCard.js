@@ -12,7 +12,7 @@ function DayCard() {
                 <Card.Text>
                     <Accordion>
                         <Card>
-                            <Accordion.Toggle className="text-center" as={Card.Header} eventKey="0">
+                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="0">
                                 Breakfast
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
@@ -27,7 +27,7 @@ function DayCard() {
                             </Accordion.Collapse>
                         </Card>
                         <Card>
-                            <Accordion.Toggle className="text-center" as={Card.Header} eventKey="1">
+                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="1">
                                 Lunch
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
@@ -41,7 +41,7 @@ function DayCard() {
                             </Accordion.Collapse>
                         </Card>
                         <Card>
-                            <Accordion.Toggle className="text-center" as={Card.Header} eventKey="2">
+                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="2">
                                 Dinner
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="2">

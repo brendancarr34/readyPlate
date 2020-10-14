@@ -18,19 +18,14 @@ function Header() {
         <Nav.Link href="#home">Home</Nav.Link>
         <Nav.Link href="#link">Calendar View</Nav.Link>
       </Nav>
-      <Dropdown className="mr">
-        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          Profile
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item>
-            <Image src={require("./static/profilepic.png")} width='50px' height='50px' alt='pf'/>
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <DropdownButton drop='left' variant="secondary" id="dropdown-basic-button" title="Information">
+        <Dropdown.Item disabled='true'>
+          <Image src={require("./static/profilepic.png")} width='50px' height='50px' alt='pf'/>
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+      </DropdownButton>
     </Navbar.Collapse>
   </Navbar>
   );

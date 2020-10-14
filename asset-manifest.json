@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/MealScheduler/static/css/main.6e496d4a.chunk.css",
-    "main.js": "/MealScheduler/static/js/main.ba721e11.chunk.js",
-    "main.js.map": "/MealScheduler/static/js/main.ba721e11.chunk.js.map",
+    "main.css": "/MealScheduler/static/css/main.a6d00526.chunk.css",
+    "main.js": "/MealScheduler/static/js/main.8dbf4065.chunk.js",
+    "main.js.map": "/MealScheduler/static/js/main.8dbf4065.chunk.js.map",
     "runtime-main.js": "/MealScheduler/static/js/runtime-main.1d6f3af5.js",
     "runtime-main.js.map": "/MealScheduler/static/js/runtime-main.1d6f3af5.js.map",
     "static/js/2.a9a47602.chunk.js": "/MealScheduler/static/js/2.a9a47602.chunk.js",
     "static/js/2.a9a47602.chunk.js.map": "/MealScheduler/static/js/2.a9a47602.chunk.js.map",
     "index.html": "/MealScheduler/index.html",
-    "precache-manifest.88c962c0c224c9a1ac6350ee4e7aed56.js": "/MealScheduler/precache-manifest.88c962c0c224c9a1ac6350ee4e7aed56.js",
+    "precache-manifest.c44b8c9467a76fa644072bda97f84979.js": "/MealScheduler/precache-manifest.c44b8c9467a76fa644072bda97f84979.js",
     "service-worker.js": "/MealScheduler/service-worker.js",
-    "static/css/main.6e496d4a.chunk.css.map": "/MealScheduler/static/css/main.6e496d4a.chunk.css.map",
+    "static/css/main.a6d00526.chunk.css.map": "/MealScheduler/static/css/main.a6d00526.chunk.css.map",
     "static/js/2.a9a47602.chunk.js.LICENSE.txt": "/MealScheduler/static/js/2.a9a47602.chunk.js.LICENSE.txt",
     "static/media/profilepic.png": "/MealScheduler/static/media/profilepic.9acfe78b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1d6f3af5.js",
     "static/js/2.a9a47602.chunk.js",
-    "static/css/main.6e496d4a.chunk.css",
-    "static/js/main.ba721e11.chunk.js"
+    "static/css/main.a6d00526.chunk.css",
+    "static/js/main.8dbf4065.chunk.js"
   ]
 }

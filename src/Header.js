@@ -10,7 +10,7 @@ function Header() {
   return (
     <Navbar bg="light" expand="lg">
     <Navbar.Brand href="#home">
-      <Image src={require("./static/mealscheduler.png")} alt='logo' width='122px' height='30px'/>
+      <Image src={require("./static/readyplate.png")} alt='logo' width='90px' height='60px'/>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

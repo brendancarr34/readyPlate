@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './DayCard.css';
 import { Card, Dropdown, DropdownButton, Accordion, ListGroup, Jumbotron, Button} from 'react-bootstrap';
 import firebase from "firebase/app";
-import 'firebase/database';
-import { firebaseConfig } from './stores.js';
-firebase.initializeApp(firebaseConfig);
 
 let getMeals = async (cardGroup, cardDate) => {
     let meals = firebase.database().ref(`group/${cardGroup}/date/${cardDate}`);

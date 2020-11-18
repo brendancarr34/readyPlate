@@ -1,16 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Main from './Main';
 import Header from './Header';
-import DayCard from './DayCard';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 
 ReactDOM.render(
     <React.StrictMode>
       <Header/>
-      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-         <DayCard/>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/profile">
+            {/* Route to About ?? */}
+          </Route>
+          <Route path="/login">
+            {/* Route to main */}
+          </Route>
+          <Route path="/">
+            <Main/>
+          </Route>
+        </Switch>
+      </Router>
     </React.StrictMode>,
     document.getElementById('root')
   );

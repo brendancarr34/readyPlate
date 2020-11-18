@@ -2,11 +2,11 @@ import React from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import './DatePicker.css';
+import './WeekPicker.css';
 
 let date = new Date();
 
-let DatePicker = () => {
+let WeekPicker = () => {
     return (
         <div>
             <DateRangePicker initialSettings={{ startDate: (date.getMonth()+1) + '/'+ date.getDate() +'/' + date.getFullYear()}}>
@@ -16,4 +16,4 @@ let DatePicker = () => {
     );
 }
 
-export default DatePicker;
+export default WeekPicker;

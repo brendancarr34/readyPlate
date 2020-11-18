@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './Main';
+import User from './User';
 import Header from './Header';
+import Chef from './Chef'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { firebaseConfig} from './stores.js';
+import firebase from "firebase/app";
+import 'firebase/database';
+firebase.initializeApp(firebaseConfig);
 
 
 ReactDOM.render(
@@ -18,8 +23,11 @@ ReactDOM.render(
         <Route path="/login">
           {/* Route to main */}
         </Route>
+        <Route path="/chef">
+          <Chef/>
+        </Route>
         <Route path="/">
-          <Main/>
+          <User/>
         </Route>
       </Switch>
     </Router>

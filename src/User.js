@@ -3,12 +3,10 @@ import {Container, Row, Col} from 'react-bootstrap';
 import './index.css';
 import Header from './Header';
 import DayCard from './DayCard';
-import DatePicker from './DatePicker';
+import WeekPicker from './WeekPicker';
 import { dates, group } from './stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
-import { firebaseConfig} from './stores.js';
-firebase.initializeApp(firebaseConfig);
 // TO-DO remove this line once pulled from db
 // let cardGroup = group;
 
@@ -65,7 +63,7 @@ const useDates = (cardUser) => {
 
 
 
-let Main = () => {
+let User = () => {
   const cardUser = useUser();
   const cardDates = useDates(cardUser);
   if(!cardUser || !cardDates) {
@@ -80,7 +78,7 @@ let Main = () => {
         <Container>
           <Row>
             <Col xl>
-              <DatePicker/>
+              <WeekPicker/>
             </Col>
           </Row>
           <Row>
@@ -96,4 +94,4 @@ let Main = () => {
   }
 };
 
-export default Main;
+export default User;

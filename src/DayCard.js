@@ -1,38 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './DayCard.css';
-import { Card, Dropdown, DropdownButton, Accordion, ListGroup} from 'react-bootstrap';
+import { Card, Dropdown, DropdownButton, Accordion, ListGroup, Jumbotron, Button} from 'react-bootstrap';
 import firebase from "firebase/app";
 import 'firebase/database';
-import { firebaseConfig } from './stores.js'
-let cardGroup = null;
-let cardDate = null;
-
+import { firebaseConfig } from './stores.js';
 firebase.initializeApp(firebaseConfig);
 
-let getMeals = async (group = "SigChiUNC", date = "2020-10-12") => {
-    cardGroup = group;
-    cardDate = date;
-    let meals = firebase.database().ref(`group/${group}/date/${date}`);
+let getMeals = async (cardGroup, cardDate) => {
+    let meals = firebase.database().ref(`group/${cardGroup}/date/${cardDate}`);
     return meals.once("value").then(function(snapshot) {
         return snapshot.val();
     });
 };
 
-const jsonToArray = (json) => {
-    let arr = [];
-    for(const [key, value] of json) {
-        arr.append([key, value]);
-    }
-    return arr;
-}
-
-const useMeals = () => {
+const useMeals = (cardGroup, cardDate) => {
     const [meals, setMeals] = useState(null);
     const loaded = useRef(false);
     useEffect(() => {
         if (!loaded.current) {
         const getAndSetMeals = async () => {
-                const fetchedMeals = await getMeals();
+                const fetchedMeals = await getMeals(cardGroup, cardDate);
                 setMeals(fetchedMeals)
                 loaded.current = true;
             }
@@ -42,15 +29,38 @@ const useMeals = () => {
     return meals;
 }
 
-let DayCard = () => {
-    const meals = useMeals();
+let DayCard = ({
+    cardGroup,
+    cardDate,
+}) => {
+    const meals = useMeals(cardGroup, cardDate);
     if (!meals) {
-        return null;
+        return (
+            <Card>
+                <Card.Body>
+                    <Card.Title className="text-center">
+                            {new Date(cardDate.split('-')[0], cardDate.split('-')[1], cardDate.split('-')[2]).toDateString()}
+                    </Card.Title>
+                    <Card.Text>
+                        <Jumbotron>
+                            <h1>No Plate Planned!</h1>
+                            <p>
+                                Contact your chef for more information. Sorry!
+                            </p>
+                            <p>
+                                <Button variant="info">Contact Chef</Button>
+                            </p>
+                        </Jumbotron>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        );
     }
     console.log(meals)
     let eventkey = "0";
     return (
-        <Card style={{ width: '20rem' }}>
+        // <Card style={{ width: '20rem' }}>
+        <Card>
             <Card.Body>
                 <Card.Title className="text-center">
                         {new Date(cardDate.split('-')[0], cardDate.split('-')[1], cardDate.split('-')[2]).toDateString()}
@@ -78,49 +88,6 @@ let DayCard = () => {
                                 </Accordion.Collapse>
                             </Card>
                         ))}
-                        {/* <Card>
-                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="0">
-                                Breakfast
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="0">
-                            <Card.Body>
-                                <ListGroup variant="flush">
-                                    <ListGroup.Item class="food-item">Bagels</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Assorted Fruit</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Cereal w/ Milk</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Sausage and Cheese Omelete</ListGroup.Item>
-                                </ListGroup>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card>
-                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="1">
-                                Lunch
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="1">
-                            <Card.Body>
-                                <ListGroup variant="flush">
-                                    <ListGroup.Item class="food-item">Cuban Sandwhich</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Fries</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Creamy Cuban Aioli</ListGroup.Item>
-                                </ListGroup>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card>
-                            <Accordion.Toggle className="text-center pointer" as={Card.Header} eventKey="2">
-                                Dinner
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="2">
-                            <Card.Body>
-                                <ListGroup variant="flush">
-                                    <ListGroup.Item class="food-item">Tangerine Marinated Chicken</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Green Beans</ListGroup.Item>
-                                    <ListGroup.Item class="food-item">Rice</ListGroup.Item>
-                                </ListGroup>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card> */}
                     </Accordion>
                 </Card.Text>
                 <div class='text-center'>

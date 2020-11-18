@@ -9,3 +9,6 @@ export const firebaseConfig = {
   appId: "1:520867095650:web:cd87edb3236614db3e1d3b",
   measurementId: "G-2P49DVCNRV"
 };
+
+export let dates = ["2020-10-12", "2020-10-13"];
+export let group = "SigChiUNC";

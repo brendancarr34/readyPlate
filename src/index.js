@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { firebaseConfig} from './stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
+import Login from './Login';
+import SignUp from './SignUp';
 firebase.initializeApp(firebaseConfig);
 
 
@@ -21,7 +23,10 @@ ReactDOM.render(
           {/* Route to About ?? */}
         </Route>
         <Route path="/login">
-          {/* Route to main */}
+          <Login/>
+        </Route>
+        <Route path="/signup">
+          <SignUp/>
         </Route>
         <Route path="/chef">
           <Chef/>
@@ -29,6 +34,7 @@ ReactDOM.render(
         <Route path="/">
           <User/>
         </Route>
+       
       </Switch>
     </Router>
   </React.StrictMode>,

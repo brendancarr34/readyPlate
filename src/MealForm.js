@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Card, Form, Dropdown, DropdownButton, Button, ButtonGroup} from 'react-bootstrap';
 import firebase from "firebase/app";
+import 'firebase/database';
 import './Chef.css'
+import useUser from './userHooks.js'
 
 
 const MealForm = () => {
+    const user = useUser();
     const [formValues, setFormValues] = useState({});
     const updateFormValues = (updateObject) => {
         setFormValues({
@@ -37,13 +40,29 @@ const MealForm = () => {
     ))
     const handleFormSubmit = () => {
         const cleanedValues = {};
-        for (let item in Object.keys(formValues)) {
+        for (let item of Object.keys(formValues)) {
             if (formValues[item] !== null) {
                 cleanedValues[item] = formValues[item];
             }
         }
+        console.log("Form Values:")
         console.log(cleanedValues);
+        writeMealData(cleanedValues);
     }
+
+    function writeMealData(formInput) {
+        let foodItems = {};
+        for (let item of Object.keys(formInput)) {
+            if (item !== "name" && item !== "date") {
+                foodItems[item] = formInput[item];
+            }
+        }
+        console.log("Food Items:")
+        console.log(foodItems);
+        firebase.database().ref(`group/${user.group}/${formInput.date}/${formInput.name}`).set(foodItems);
+    }
+
+
     return (
         <div>
             <Form id="meal-editor">
@@ -53,9 +72,9 @@ const MealForm = () => {
                 </Form.Group>
                 <Form.Group controlId="mealForm.mealDate">
                     <Form.Label>Meal Date</Form.Label>
-                    <Form.Control placeholder="MM/DD/YYYY" onChange={getHandleFieldChange('date')}/>
+                    <Form.Control placeholder="YYYY-MM-DD" onChange={getHandleFieldChange('date')}/>
                     <Form.Text id="dateHelpBlock" muted>
-                        All dates must be in the form MM/DD/YYYY. Don't forget your slashes!
+                        All dates must be in the form YYYY-MM-DD. Don't forget your slashes!
                     </Form.Text>
                 </Form.Group>
                 {mealFormItems}

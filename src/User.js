@@ -7,31 +7,9 @@ import WeekPicker from './WeekPicker';
 import { dates, group } from './stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
+import useUser from './userHooks.js'
 // TO-DO remove this line once pulled from db
 // let cardGroup = group;
-
-let getUser = async () => {
-  let meals = firebase.database().ref(`users/9718920c-3246-4961-b068-bfa0336125bd`);
-  return meals.once("value").then(function(snapshot) {
-      return snapshot.val();
-  });
-};
-
-const useUser = () => {
-  const [user, setUser] = useState(null);
-  const loaded = useRef(false);
-  useEffect(() => {
-      if (!loaded.current) {
-      const getAndSetUser = async () => {
-              const fetchedUser = await getUser();
-              setUser(fetchedUser);
-              loaded.current = true;
-          }
-          getAndSetUser();
-      }
-  }, [])
-  return user;
-}
 
 let getDates = async (cardUser) => {
   if(cardUser) {
@@ -78,7 +56,8 @@ let User = () => {
         <Container>
           <Row>
             <Col xl>
-              <WeekPicker/>
+              {/* <WeekPicker></WeekPicker> */}
+              <div><br/><br/><br/></div>
             </Col>
           </Row>
           <Row>

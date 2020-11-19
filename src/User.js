@@ -36,6 +36,7 @@ const useDates = (cardUser) => {
           getAndSetDate();
       }
   }, [cardUser])
+  console.log(dates);
   return dates;
 }
 

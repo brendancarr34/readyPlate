@@ -59,7 +59,7 @@ const MealForm = () => {
         }
         console.log("Food Items:")
         console.log(foodItems);
-        firebase.database().ref(`group/${user.group}/${formInput.date}/${formInput.name}`).set(foodItems);
+        firebase.database().ref(`group/${user.group}/date/${formInput.date}/${formInput.name}`).set(foodItems);
     }
 
 
@@ -88,7 +88,7 @@ const MealForm = () => {
                 </Button>
             </ButtonGroup>
             <div><br/></div>
-            <Button variant="light" size="lg" block onClick={handleFormSubmit}>
+            <Button variant="light" size="lg" block onClick={() => {handleFormSubmit(); window.location.reload()}}>
                 Submit
             </Button>
         </div>

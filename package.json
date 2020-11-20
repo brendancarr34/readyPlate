@@ -1,6 +1,6 @@
 {
   "name": "meal-scheduler",
-  "homepage": "http://jackowfish.github.io/MealScheduler",
+  "homepage": "http://jackowfish.github.io/readyPlate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

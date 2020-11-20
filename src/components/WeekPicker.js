@@ -9,7 +9,7 @@ let date = new Date();
 let WeekPicker = () => {
     return (
         <div>
-            <DateRangePicker initialSettings={{ startDate: (date.getMonth()+1) + '/'+ date.getDate() +'/' + date.getFullYear()}}>
+            <DateRangePicker initialSettings={{ startDate: date.getMonth() + '/'+ date.getDate() +'/' + date.getFullYear()}}>
                 <button class="material-button"type="button"><span>Pick Dates</span></button>
             </DateRangePicker>
         </div>

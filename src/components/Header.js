@@ -17,7 +17,7 @@ function Header() {
     } else return null;
   }
   let link = window.location.href;
-  if (link.includes('login')) {
+  if (link.includes('login') || link.includes('signup')) {
     return null;
   } else {
     return (

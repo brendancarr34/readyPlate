@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import 'firebase/database';
 
 let getUser = async () => {
-    let meals = firebase.database().ref(`users/9718920c-3246-4961-b068-bfa0336125bd`);
+    let meals = firebase.database().ref(`users/qSwDu9kdf6d9rgE8aReiTH9mREY2`);
     return meals.once("value").then(function(snapshot) {
         return snapshot.val();
     });

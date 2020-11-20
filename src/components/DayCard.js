@@ -60,7 +60,7 @@ let DayCard = ({
         <Card>
             <Card.Body>
                 <Card.Title className="text-center">
-                        {new Date(cardDate.split('-')[0], cardDate.split('-')[1], cardDate.split('-')[2]).toDateString()}
+                        {new Date(cardDate.split('-')[0], cardDate.split('-')[1]-1, cardDate.split('-')[2]).toDateString()}
                 </Card.Title>
                 <Card.Text>
                     <Accordion>

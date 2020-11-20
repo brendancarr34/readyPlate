@@ -8,6 +8,7 @@ import useUser from '../hooks/userHooks.js'
 
 const MealForm = () => {
     const user = useUser();
+    // Get form values from field and add to object of form values
     const [formValues, setFormValues] = useState({});
     const updateFormValues = (updateObject) => {
         setFormValues({
@@ -15,7 +16,14 @@ const MealForm = () => {
             ...updateObject
         });
     };
-
+    const getHandleFieldChange = (index) => (event) => {
+        const fieldIndex = index;
+        const newValue = event.target.value;
+        updateFormValues({
+            [fieldIndex]: newValue,
+        })
+    }
+    // Add new item field when user clicks 'add an item'
     const [mealEntryCount, setMealEntryCount] = useState(1);
     const addOneMealEntry = () => setMealEntryCount(mealEntryCount + 1);
     const deleteOneMealEntry = () => {
@@ -25,13 +33,6 @@ const MealForm = () => {
         setMealEntryCount(mealEntryCount >1 ? mealEntryCount - 1 : mealEntryCount)
     };
 
-    const getHandleFieldChange = (index) => (event) => {
-        const fieldIndex = index;
-        const newValue = event.target.value;
-        updateFormValues({
-            [fieldIndex]: newValue,
-        })
-    }
     const mealFormItems = (new Array(mealEntryCount)).fill(0).map((item, index) => (
         <Form.Group controlId={`mealForm.mealItem${index + 1}`}>
             <Form.Label>Item #{(index+1).toString()}</Form.Label>

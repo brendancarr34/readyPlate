@@ -11,50 +11,30 @@ import useUser from '../hooks/userHooks.js'
 // TO-DO remove this line once pulled from db
 // let cardGroup = group;
 
-let getDates = async (cardUser) => {
-  if(cardUser) {
-      let meals = firebase.database().ref(`group/${cardUser.group}/date`);
-      return meals.once("value").then(function(snapshot) {
-          console.log(snapshot.val());
-          return snapshot.val();
-      });
-  } else {
-    return null;
-  }
-};
+// get current week
 
-const useDates = (cardUser) => {
-  const [dates, setDates] = useState(null);
-  const loaded = useRef(false);
-  useEffect(() => {
-      if (!loaded.current && cardUser) {
-      const getAndSetDate = async () => {
-              const fetchedDates = await getDates(cardUser);
-              setDates(fetchedDates);
-              loaded.current = true;
-          }
-          getAndSetDate();
-      }
-  }, [cardUser])
-  console.log(dates);
-  return dates;
+const getWeek = (curr) => {
+  let week = []
+
+  for (let i = 1; i <= 5; i++) {
+    let first = curr.getDate() - curr.getDay() + i;
+    let day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
+    week.push(day);
+  } 
+  return week;
 }
-
-
 
 let User = () => {
   const cardUser = useUser();
-  const cardDates = useDates(cardUser);
-  if(!cardUser || !cardDates) {
+  let week = getWeek(new Date());
+  if(!cardUser) {
     return null;
   } else {
     console.log("user:")
     console.log(cardUser);
     console.log("dates:")
-    console.log(Object.keys(cardDates));
     return (  
       <div>
-        <Container>
           <Row>
             <Col xl>
               <WeekPicker></WeekPicker>
@@ -62,13 +42,12 @@ let User = () => {
             </Col>
           </Row>
           <Row>
-            {Object.keys(cardDates).map(cardDate => (
+            {week.map(cardDate => (
               <Col sm>
                 <DayCard cardDate={cardDate} cardGroup={cardUser.group} />
               </Col>
             ))}
           </Row>
-        </Container>
       </div>
       )
   }

@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
+import getSignIn from '../hooks/signInHook.js'
 
 
 function Login () {
+    const [formValues, setFormValues] = useState({});
+    const updateFormValues = (updateObject) => {
+        setFormValues({
+            ...formValues,
+            ...updateObject
+        });
+    };
+    const getHandleFieldChange = (index) => (event) => {
+        const fieldIndex = index;
+        const newValue = event.target.value;
+        updateFormValues({
+            [fieldIndex]: newValue,
+        })
+    }
+
     return (
         <div>
             <Container fluid style={{backgroundColor: '#f47373', height: '100vh', display: 'flex'}}>
@@ -22,21 +38,21 @@ function Login () {
                             </Container>
                         </Jumbotron>
                         <Form style={{paddingTop:'5%', paddingBottom: '5%', flex: 1, height: "1"}}>
-                            <Form.Group controlId="formUsername">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" placeholder="Enter Username" />
+                            <Form.Group controlId="formEmail">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" placeholder="Enter Email" onChange={getHandleFieldChange('email')}/>
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control type="password" placeholder="Enter Password" onChange={getHandleFieldChange('password')}/>
                             </Form.Group>
-                            <Button style={{marginTop:'5%'}} block>
-                                    Submit
+                            <Button style={{marginTop:'5%'}} block onClick={() => {getSignIn(formValues)}}>
+                                    Sign In
                             </Button>
                             <p style={{marginTop:'10%'}}>
                                 Don't have an account yet?
                             </p>
-                            <Button block>
+                            <Button block href='/signup'>
                                 Sign Up
                             </Button>
                         </Form>
@@ -44,7 +60,7 @@ function Login () {
                 </Row>
             </Container>
         </div>
-    )
+    );
 }
 
 export default Login;

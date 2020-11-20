@@ -1,30 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import '../styles/DayCard.css';
 import { Card, Dropdown, DropdownButton, Accordion, ListGroup, Jumbotron, Button} from 'react-bootstrap';
-import firebase from "firebase/app";
+import useMeals from '../hooks/mealHook.js'
 
-let getMeals = async (cardGroup, cardDate) => {
-    let meals = firebase.database().ref(`group/${cardGroup}/date/${cardDate}`);
-    return meals.once("value").then(function(snapshot) {
-        return snapshot.val();
-    });
-};
 
-const useMeals = (cardGroup, cardDate) => {
-    const [meals, setMeals] = useState(null);
-    const loaded = useRef(false);
-    useEffect(() => {
-        if (!loaded.current) {
-        const getAndSetMeals = async () => {
-                const fetchedMeals = await getMeals(cardGroup, cardDate);
-                setMeals(fetchedMeals)
-                loaded.current = true;
-            }
-            getAndSetMeals();
-        }
-    }, [])
-    return meals;
-}
 
 let DayCard = ({
     cardGroup,

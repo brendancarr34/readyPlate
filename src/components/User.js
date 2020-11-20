@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import '../styles/index.css';
 import Header from './Header';
 import DayCard from './DayCard';
@@ -12,7 +12,6 @@ import useUser from '../hooks/userHooks.js'
 // let cardGroup = group;
 
 // get current week
-
 const getWeek = (curr) => {
   let week = []
 
@@ -26,27 +25,43 @@ const getWeek = (curr) => {
 
 let User = () => {
   const cardUser = useUser();
-  let week = getWeek(new Date());
+  // set default of week to current date and add modifiers
+  const [week, setWeek] = useState(getWeek(new Date()));
+
+  const addOneWeek = () => {
+    let currentDay = new Date(week[0]);
+    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()+7)
+    setWeek(getWeek(newDay));
+  }
+  const subOneWeek = () => {
+    let currentDay = new Date(week[0]);
+    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()-7)
+    setWeek(getWeek(newDay));
+  };
+
   if(!cardUser) {
     return null;
   } else {
+    // Generate weeklyPlates based on week array
+    const weeklyPlates = (new Array(week.length)).fill(0).map((item, index) => (
+      <Col sm>
+        <DayCard cardDate={week[index]} cardGroup={cardUser.group} />
+      </Col>
+    ));
     console.log("user:")
     console.log(cardUser);
     console.log("dates:")
+    console.log(week);
     return (  
       <div>
           <Row>
-            <Col xl>
-              <WeekPicker></WeekPicker>
-              {/* <div><br/><br/><br/></div> */}
+            <Col xl style={{marginTop: '2%', marginBottom: '2%', marginRight: '10%', marginLeft: '10%'}}>
+              <Button variant="secondary" onClick={() => {subOneWeek()}}>Previous Week</Button>
+              <Button variant="secondary" className="float-right" onClick={() => {addOneWeek()}}>Next Week</Button>
             </Col>
           </Row>
           <Row>
-            {week.map(cardDate => (
-              <Col sm>
-                <DayCard cardDate={cardDate} cardGroup={cardUser.group} />
-              </Col>
-            ))}
+            {weeklyPlates}
           </Row>
       </div>
       )

@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import User from './User';
-import Header from './Header';
-import Chef from './Chef'
+import './styles/index.css';
+import User from './components/User';
+import Header from './components/Header';
+import Chef from './components/Chef'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { firebaseConfig} from './stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
-import Login from './Login';
-import SignUp from './SignUp';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 firebase.initializeApp(firebaseConfig);
 
 

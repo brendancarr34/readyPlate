@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Container, Row, Col, Card, Form, Dropdown, DropdownButton, Button, ButtonGroup} from 'react-bootstrap';
-import firebase from "firebase/app";
-import './Chef.css'
+import { Container, Row, Col, Card,Button, ButtonGroup} from 'react-bootstrap';
+import '../styles/Chef.css'
 import MealForm from './MealForm.js'
-
-let numItems = 1;
-
-const createMealEditor = () => {
-
-}
 
 const Chef = () => {
     const [mealCreation, setMealCreation] = useState(false);
@@ -37,7 +30,7 @@ const Chef = () => {
                 <Row>
                     <Col>
                             <Button variant="primary" size="large" block onClick={addMealCreation}>
-                                Add a Meal!
+                                Add a Plate
                             </Button>
                     </Col>
                 </Row>

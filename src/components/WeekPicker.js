@@ -2,7 +2,7 @@ import React from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import './WeekPicker.css';
+import '../styles/WeekPicker.css';
 
 let date = new Date();
 

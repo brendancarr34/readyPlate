@@ -17,7 +17,7 @@ function Login () {
                             <Image style={{ flex:1, 
                                         height: undefined, 
                                         width: undefined,
-                                        }} src={require("./static/readyplate.png")} fluid />
+                                        }} src={require("../static/readyplate.png")} fluid />
                         </div>
                     </Col>
                     <Col style={{backgroundColor:'skyblue'}}>

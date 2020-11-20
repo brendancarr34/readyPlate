@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Card, Form, Dropdown, DropdownButton, Button, ButtonGroup} from 'react-bootstrap';
 import firebase from "firebase/app";
 import 'firebase/database';
-import './Chef.css'
-import useUser from './userHooks.js'
+import '../styles/Chef.css'
+import useUser from '../hooks/userHooks.js'
 
 
 const MealForm = () => {

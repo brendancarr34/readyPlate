@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import './index.css';
+import '../styles/index.css';
 import Header from './Header';
 import DayCard from './DayCard';
 import WeekPicker from './WeekPicker';
-import { dates, group } from './stores.js';
+import { dates, group } from '../stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
-import useUser from './userHooks.js'
+import useUser from '../hooks/userHooks.js'
 // TO-DO remove this line once pulled from db
 // let cardGroup = group;
 
@@ -57,8 +57,8 @@ let User = () => {
         <Container>
           <Row>
             <Col xl>
-              {/* <WeekPicker></WeekPicker> */}
-              <div><br/><br/><br/></div>
+              <WeekPicker></WeekPicker>
+              {/* <div><br/><br/><br/></div> */}
             </Col>
           </Row>
           <Row>

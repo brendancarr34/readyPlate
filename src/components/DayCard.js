@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './DayCard.css';
+import '../styles/DayCard.css';
 import { Card, Dropdown, DropdownButton, Accordion, ListGroup, Jumbotron, Button} from 'react-bootstrap';
 import firebase from "firebase/app";
 
@@ -36,7 +36,7 @@ let DayCard = ({
             <Card>
                 <Card.Body>
                     <Card.Title className="text-center">
-                            {new Date(cardDate.split('-')[0], cardDate.split('-')[1], cardDate.split('-')[2]).toDateString()}
+                            {new Date(cardDate.split('-')[0], cardDate.split('-')[1]-1, cardDate.split('-')[2]).toDateString()}
                     </Card.Title>
                     <Card.Text>
                         <Jumbotron>

@@ -21,7 +21,7 @@ function Login () {
                                 <h1 style={{textAlign: 'center'}}>Welcome to readyPlate!</h1>
                             </Container>
                         </Jumbotron>
-                        <Form style={{paddingTop:'5%', flex: 1, height: "1"}}>
+                        <Form style={{paddingTop:'5%', paddingBottom: '5%', flex: 1, height: "1"}}>
                             <Form.Group controlId="formUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="username" placeholder="Enter Username" />

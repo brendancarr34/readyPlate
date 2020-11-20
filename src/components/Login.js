@@ -23,7 +23,7 @@ function Login () {
         <div>
             <Container fluid style={{backgroundColor: '#f47373', height: '100vh', display: 'flex'}}>
                 <Row s={2} style={{flex: '1'}}>
-                    <Col md style={{justifyContent:'center'}}>
+                    <Col md={8} style={{justifyContent:'center'}}>
                         <div style={{marginTop: '5%'}}>
                             <Image style={{ flex:1, 
                                         height: undefined, 

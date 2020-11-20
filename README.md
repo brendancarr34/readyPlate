@@ -1,4 +1,4 @@
-# MealScheduler
+# readyPlate
 The overall goal of this project is to design a free-to-use meal plan web page for organizations to use instead of an excel sheet. The idea was inspired by the Campus Cooks app many organizations use to schedule and plan meals for their members. It informs members of the meals for the upcoming week, allows them to rate past meals, and schedule when they are eating the meal for the day to prevent food waste. The caveat to their design is that it requires organizations to hire chefs from Campus Cooks in order to use their app. Our goal is to make similar software so that chefs are able to easily plan for the number of members who will be eating and make accommodations for food allergies, substitutions, etc.
 
 ### OVERVIEW

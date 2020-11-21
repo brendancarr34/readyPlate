@@ -66,13 +66,13 @@ let DayCard = ({
                         ))}
                     </Accordion>
                 </Card.Text>
-                <div class='text-center'>
+                {/* <div class='text-center'>
                     <DropdownButton id="dropdown-basic-button" title="Meal Options" class='center'>
                         <Dropdown.Item href="#/action-1">Rate Meal</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Request Late Plate</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Message Chef</Dropdown.Item>
                     </DropdownButton>
-                </div>
+                </div> */}
             </Card.Body>
         </Card>
     );

@@ -11,6 +11,7 @@ import firebase from "firebase/app";
 import 'firebase/database';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 firebase.initializeApp(firebaseConfig);
 
 
@@ -20,7 +21,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/profile">
-          {/* Route to About ?? */}
+          <Profile/>
         </Route>
         <Route path="/login">
           <Login/>

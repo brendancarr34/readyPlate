@@ -6,16 +6,26 @@ import { Form, FormControl} from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import useUser from '../hooks/userHooks.js'
 import { Image, DropdownButton, Dropdown} from 'react-bootstrap';
+import firebase from 'firebase';
+import auth from 'firebase/auth';
 
 function Header() {
-  let user = useUser();
-  const plateEditor = () => {
-    if (user.type !== "user") {
-      return (
-          <Nav.Link href="/chef">Plate Editor</Nav.Link>
-      )
-    } else return null;
+  const logout = () => {
+    firebase.auth().signOut().then(function() {
+      window.location.href = "login";
+    }).catch(function(error) {
+      console.log("Logout didn't work");
+    });
   }
+
+  // const plateEditor = () => {
+  //   if (user.type !== "user") {
+  //     return (
+  //         <Nav.Link href="/chef">Plate Editor</Nav.Link>
+  //     )
+  //   } else return null;
+  // }
+
   let link = window.location.href;
   if (link.includes('login') || link.includes('signup')) {
     return null;
@@ -37,7 +47,7 @@ function Header() {
             <Image src={require("../static/profilepic.png")} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>
           <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-          <Dropdown.Item href="/login">Logout</Dropdown.Item>
+          <Dropdown.Item onClick={() => {logout()}}>Logout</Dropdown.Item>
         </DropdownButton>
       </Navbar.Collapse>
     </Navbar>

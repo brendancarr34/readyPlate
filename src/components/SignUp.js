@@ -33,11 +33,9 @@ function SignUp () {
                         </div>
                     </Col>
                     <Col style={{backgroundColor:'skyblue'}}>
-                        <Jumbotron style={{marginTop:'5%'}}>
-                            <Container>
-                                <h1 style={{textAlign: 'center'}}>Welcome to readyPlate!</h1>
-                            </Container>
-                        </Jumbotron>
+                        <div>
+                            <Image src={require("../static/readyplate-logo-only.png")} fluid style={{marginTop:'20%'}}/>
+                        </div>
                         <Form style={{paddingTop:'2%', paddingBottom: '2%', flex: 1, height: "1"}}>
                             <Form.Group controlId="formEmail">
                                 <Form.Label>Email</Form.Label>

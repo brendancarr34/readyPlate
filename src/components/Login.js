@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
 import getSignIn from '../hooks/signInHook.js'
+import firebase from 'firebase';
+import auth from 'firebase/auth';
+import useUser from '../hooks/userHooks.js';
 
+export let user = {};
+let userDefined = false;
 
 function Login () {
     const [formValues, setFormValues] = useState({});
@@ -18,25 +23,35 @@ function Login () {
             [fieldIndex]: newValue,
         })
     }
+    let uid = "";
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          uid = user.uid;
+          userDefined = true;
+          window.location.href = '/';
+        } else {
+          console.log("Didn't work");
+        }
+      });
+      
+      let userObj = useUser(uid);
 
+      if(userDefined) {
+        user = Object.entries(userObj)[0][1];
+      }
     return (
         <div>
             <Container fluid style={{backgroundColor: '#f47373', height: '100vh', display: 'flex'}}>
                 <Row s={2} style={{flex: '1'}}>
                     <Col md={8} style={{justifyContent:'center'}}>
                         <div style={{marginTop: '5%'}}>
-                            <Image style={{ flex:1, 
-                                        height: undefined, 
-                                        width: undefined,
-                                        }} src={require("../static/readyplate.png")} fluid />
+                            <Image style={{ flex:1, height: undefined, width: undefined }} src={require("../static/readyplate.png")} fluid />
                         </div>
                     </Col>
                     <Col style={{backgroundColor:'skyblue'}}>
-                        <Jumbotron style={{marginTop:'5%'}}>
-                            <Container>
-                                <h1 style={{textAlign: 'center'}}>Welcome to readyPlate!</h1>
-                            </Container>
-                        </Jumbotron>
+                        <div>
+                            <Image src={require("../static/readyplate-logo-only.png")} fluid style={{marginTop:'20%'}}/>
+                        </div>
                         <Form style={{paddingTop:'5%', paddingBottom: '5%', flex: 1, height: "1"}}>
                             <Form.Group controlId="formEmail">
                                 <Form.Label>Email</Form.Label>

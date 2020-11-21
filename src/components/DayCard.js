@@ -12,13 +12,13 @@ let DayCard = ({
     const meals = useMeals(cardGroup, cardDate);
     if (!meals) {
         return (
-            <Card>
+            <Card style={{marginBottom: "5%"}}>
                 <Card.Body>
                     <Card.Title className="text-center">
                             {new Date(cardDate.split('-')[0], cardDate.split('-')[1]-1, cardDate.split('-')[2]).toDateString()}
                     </Card.Title>
                     <Card.Text>
-                        <Jumbotron>
+                        <Jumbotron style={{maxHeight: "300px"}}>
                             <h1>No Plate Planned!</h1>
                             <p>
                                 Contact your chef for more information. Sorry!
@@ -36,7 +36,7 @@ let DayCard = ({
     let eventkey = "0";
     return (
         // <Card style={{ width: '20rem' }}>
-        <Card>
+        <Card style={{marginBottom: "5%"}}>
             <Card.Body>
                 <Card.Title className="text-center">
                         {new Date(cardDate.split('-')[0], cardDate.split('-')[1]-1, cardDate.split('-')[2]).toDateString()}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
 import getSignUp from '../hooks/signUpHook.js'
+import SchoolSearch from './SchoolSearch.js';
 
 
 function SignUp () {
@@ -45,6 +46,11 @@ function SignUp () {
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Enter Password" onChange={getHandleFieldChange('password')}/>
+                            </Form.Group>
+                            <SchoolSearch onChange={getHandleFieldChange('school')}/>
+                            <Form.Group controlId="formGroup">
+                                <Form.Label>Group Code</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Group Code" onChange={getHandleFieldChange('group')}/>
                             </Form.Group>
                             <Button style={{marginTop:'5%'}} block onClick={() => {getSignUp(formValues)}}>
                                     Sign Up

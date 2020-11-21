@@ -10,8 +10,7 @@ async function getSearchSchools(searchValue) {
             limit: 5
         }
     });
-    console.log(result);
-    return result.data;
+    return result.data.result;
 }
 
 const useSearch = (searchQuery) => {
@@ -28,6 +27,7 @@ const useSearch = (searchQuery) => {
             getAndSetSearchResults();
         }
     }, [searchQuery])
+    console.log(searchResults);
     return searchResults;
 }
 

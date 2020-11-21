@@ -27,7 +27,6 @@ const useSearch = (searchQuery) => {
             getAndSetSearchResults();
         }
     }, [searchQuery])
-    console.log(searchResults);
     return searchResults;
 }
 

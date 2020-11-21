@@ -33,7 +33,6 @@ let SchoolSearch = () => {
     
     // code to change school when list item is clicked
     const [selectedSchool, setSelectedSchool] = useState("");
-    console.log(selectedSchool);
 
     const updateSeletedSchool = (updateString) => {
         setSelectedSchool(updateString);
@@ -41,7 +40,6 @@ let SchoolSearch = () => {
 
     const getHandleSchoolChange = (event) => {
         const newValue = event.target.value;
-        console.log(newValue);
         updateSeletedSchool(newValue);
     };
     

@@ -9,7 +9,7 @@ let SchoolSearch = () => {
 
     const schools = useSearch(searchValue) || new Array(5).fill("");
     
-    const options = schools.map((school) => (
+    const options = schools.slice(0, 5).map((school) => (
         <ListGroup.Item>{school.name}</ListGroup.Item>
     ))
 

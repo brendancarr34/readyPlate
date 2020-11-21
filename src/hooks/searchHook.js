@@ -4,13 +4,13 @@ import { useRef, useState, useEffect } from 'react';
 async function getSearchSchools(searchValue) {
     const result = await axios({
         method: 'get',
-        url: 'https://cors-anywhere.herokuapp.com/https://nearbycolleges.info/api/autocomplete',
+        url: 'http://universities.hipolabs.com/search',
         params: {
-            q: searchValue,
-            limit: 5
+            name: searchValue,
+            country: 'United States'
         }
     });
-    return result.data.result;
+    return result.data;
 }
 
 const useSearch = (searchQuery) => {

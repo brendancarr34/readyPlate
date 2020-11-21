@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, ListGroup } from 'react-bootstrap';
 import useSearch from '../hooks/searchHook.js';
+import { debounce } from "throttle-debounce";
 
 let SchoolSearch = () => {
 

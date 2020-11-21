@@ -14,7 +14,6 @@ import useUser from '../hooks/userHooks.js'
 // get current week
 const getWeek = (curr) => {
   let week = []
-
   for (let i = 1; i <= 5; i++) {
     let first = curr.getDate() - curr.getDay() + i;
     let day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
@@ -24,18 +23,19 @@ const getWeek = (curr) => {
 }
 
 let User = () => {
+  const today = new Date();
   const cardUser = useUser();
   // set default of week to current date and add modifiers
-  const [week, setWeek] = useState(getWeek(new Date()));
+  const [week, setWeek] = useState(getWeek(new Date(today.getFullYear(), today.getMonth(), today.getDate())));
 
   const addOneWeek = () => {
     let currentDay = new Date(week[0]);
-    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()+7)
+    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()+7);
     setWeek(getWeek(newDay));
   }
   const subOneWeek = () => {
     let currentDay = new Date(week[0]);
-    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()-7)
+    let newDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()-7);
     setWeek(getWeek(newDay));
   };
 

@@ -17,7 +17,8 @@ const useMeals = (cardGroup, cardDate) => {
         const getAndSetMeals = async () => {
                 const fetchedMeals = await getMeals(cardGroup, cardDate);
                 setMeals(fetchedMeals)
-                loaded.current = true;
+                // Commented out so daycards reload when requested.
+                // loaded.current = true;
             }
             getAndSetMeals();
         }

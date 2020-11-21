@@ -38,7 +38,7 @@ function SignUp () {
                                 <h1 style={{textAlign: 'center'}}>Welcome to readyPlate!</h1>
                             </Container>
                         </Jumbotron>
-                        <Form style={{paddingTop:'5%', paddingBottom: '5%', flex: 1, height: "1"}}>
+                        <Form style={{paddingTop:'2%', paddingBottom: '2%', flex: 1, height: "1"}}>
                             <Form.Group controlId="formEmail">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" placeholder="Enter Email" onChange={getHandleFieldChange('email')}/>

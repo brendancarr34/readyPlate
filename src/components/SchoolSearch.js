@@ -23,7 +23,7 @@ let SchoolSearch = () => {
 
     const schools = useSearch(searchValue) || new Array(5).fill("");
     
-    const options = schools.slice(0, 5).map((school) => (
+    const options = schools.slice(0, 3).map((school) => (
         <ListGroup.Item>
             <Button variant='light'  value={school.name} onClick={(event) => {getHandleSchoolChange(event)}}>+</Button>
             &nbsp;

@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 async function getSearchSchools(searchValue) {
     const result = await axios({
         method: 'get',
-        url: 'http://universities.hipolabs.com/search',
+        url: 'https://cors-anywhere.herokuapp.com/http://universities.hipolabs.com/search',
         params: {
             name: searchValue,
             country: 'United States'

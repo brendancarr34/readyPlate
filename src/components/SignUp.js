@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
 import getSignUp from '../hooks/signUpHook.js'
 import SchoolSearch from './SchoolSearch.js';
+import firebase from 'firebase';
+import database from 'firebase/database'
+import useUser from '../hooks/userHooks.js'
 
 
 function SignUp () {
@@ -12,17 +15,47 @@ function SignUp () {
             ...updateObject
         });
     };
-    const getHandleFieldChange = (index) => (event) => {
-        const fieldIndex = index;
+    const getHandleFieldChange = (label) => (event) => {
+        const fieldIndex = label;
         const newValue = event.target.value;
         updateFormValues({
             [fieldIndex]: newValue,
         })
     }
+    const reload = () => {
+        window.location.href = '/';
+    }
+
+    let uid = "";
+    let userDefined = false;
+    let clickedSubmit = false;
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user && !userDefined) {
+            uid = user.uid;
+            userDefined = true;
+            if (formValues.group && uid && clickedSubmit) {
+                console.log(formValues);
+                firebase.database().ref(`users/${uid}`).set({
+                    group: formValues.group,
+                    name: formValues.fName + " " + formValues.lName,
+                    type: formValues.type
+                }).then(() => {
+                    console.log('Sign-Up successful');
+                    reload();
+                }).catch((error) => {
+                    console.log('Writing user data to database unsuccessful');
+                });
+            }
+        } else {
+            console.log("Not Signed In");
+        }
+        });
+
 
     return (
         <div>
-            <Container fluid style={{backgroundColor: '#f47373', height: '100vh', display: 'flex'}}>
+            <Container fluid style={{backgroundColor: '#f47373', display: 'flex'}}>
                 <Row s={2} style={{flex: '1'}}>
                     <Col md={8} style={{justifyContent:'center'}}>
                         <div style={{marginTop: '5%'}}>
@@ -34,9 +67,15 @@ function SignUp () {
                     </Col>
                     <Col style={{backgroundColor:'skyblue'}}>
                         <div>
-                            <Image src={require("../static/readyplate-logo-only.png")} fluid style={{marginTop:'20%'}}/>
+                            <Image src={require("../static/readyplate-logo-only.png")} fluid/>
                         </div>
                         <Form style={{paddingTop:'2%', paddingBottom: '2%', flex: 1, height: "1"}}>
+                            <Form.Group controlId="formName">
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control type="text" placeholder="First Name" onChange={getHandleFieldChange('fName')}/>
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control type="text" placeholder="Last Name" onChange={getHandleFieldChange('lName')}/>
+                            </Form.Group>
                             <Form.Group controlId="formEmail">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" placeholder="Enter Email" onChange={getHandleFieldChange('email')}/>
@@ -46,11 +85,18 @@ function SignUp () {
                                 <Form.Control type="password" placeholder="Enter Password" onChange={getHandleFieldChange('password')}/>
                             </Form.Group>
                             <SchoolSearch onChange={getHandleFieldChange('school')}/>
+                            <Form.Group controlId="formType">
+                                <Form.Label>User type</Form.Label>
+                                <Form.Control type="text" placeholder="user or chef?" onChange={getHandleFieldChange('type')}/>
+                                <Form.Text id="typeHelpBlock" muted>
+                                    Either enter user or chef (all lowercase!)
+                                </Form.Text>
+                            </Form.Group>
                             <Form.Group controlId="formGroup">
                                 <Form.Label>Group Code</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Group Code" onChange={getHandleFieldChange('group')}/>
                             </Form.Group>
-                            <Button style={{marginTop:'5%'}} block onClick={() => {getSignUp(formValues)}}>
+                            <Button style={{marginTop:'5%'}} block onClick={() => {getSignUp(formValues); clickedSubmit = true;}}>
                                     Sign Up
                             </Button>
                         </Form>

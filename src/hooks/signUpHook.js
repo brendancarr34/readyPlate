@@ -5,8 +5,8 @@ import 'firebase/auth';
 let getSignUp = async (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
     .then((user) => {
-        console.log(user);
-        return user;
+        console.log(user.uid);
+        return user.uid;
     })
     .catch((error) => {
         var errorCode = error.code;

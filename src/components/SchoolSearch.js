@@ -47,7 +47,7 @@ let SchoolSearch = () => {
         <div>
             <Form.Group>
                 <Form.Label>University</Form.Label>
-                <Form.Control type="text" placeholder="Search Schools" value={selectedSchool} onChange={(event) => {getHandleSearchChange(event)}}/>
+                <Form.Control type="text" placeholder="Search Schools" value={selectedSchool} onChange={(event) => {getHandleSearchChange(event);}}/>
             </Form.Group>
             <ListGroup>
                 {options}

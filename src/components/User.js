@@ -31,7 +31,7 @@ let User = () => {
     if (user) {
       uid = user.uid;
     } else {
-        window.location.href="/login";
+        window.location.href="/#/login";
     }
   });
 

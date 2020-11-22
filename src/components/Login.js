@@ -67,7 +67,7 @@ function Login () {
                             <p style={{marginTop:'10%'}}>
                                 Don't have an account yet?
                             </p>
-                            <Button block href='/signup'>
+                            <Button block href='/#/signup'>
                                 Sign Up
                             </Button>
                         </Form>

@@ -31,7 +31,7 @@ let User = () => {
     if (user) {
       uid = user.uid;
     } else {
-        console.log('userHook error');
+        window.location.href="/login";
     }
   });
 

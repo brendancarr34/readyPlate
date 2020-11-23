@@ -39,7 +39,7 @@ function Header() {
     }
     const pictureString = profilePicSwitch(user.pic)
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar style={{backgroundColor:'#f47373'}} expand="lg">
       <Navbar.Brand href="/">
         <Image src={require("../static/readyplate.png")} alt='logo' width='90px' height='60px'/>
       </Navbar.Brand>
@@ -49,7 +49,7 @@ function Header() {
           <Nav.Link href="/">Home</Nav.Link>
           {editButton}
         </Nav>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title={user.name}>
+        <DropdownButton variant="light" id="dropdown-basic-button" title={user.name}>
           <Dropdown.Item disabled='true'>
             <Image src={pictureString} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>

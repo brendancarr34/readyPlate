@@ -36,7 +36,7 @@ let DayCard = ({
     let eventkey = "0";
     return (
         // <Card style={{ width: '20rem' }}>
-        <Card style={{marginBottom: "5%"}}>
+        <Card style={{marginBottom: "5%", backgroundColor: 'skyblue'}}>
             <Card.Body>
                 <Card.Title className="text-center">
                         {new Date(cardDate.split('-')[0], cardDate.split('-')[1]-1, cardDate.split('-')[2]).toDateString()}

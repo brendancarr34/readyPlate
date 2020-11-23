@@ -20,7 +20,7 @@ function Header() {
       cookies.remove('uid');
       window.location.href = "/#/login";
     }).catch(function(error) {
-      // console.log("Logout didn't work");
+      console.log("Logout didn't work");
     });
   }
 
@@ -49,7 +49,7 @@ function Header() {
           <Nav.Link href="/">Home</Nav.Link>
           {editButton}
         </Nav>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title="">
+        <DropdownButton variant="secondary" id="dropdown-basic-button" title={user.name}>
           <Dropdown.Item disabled='true'>
             <Image src={pictureString} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>

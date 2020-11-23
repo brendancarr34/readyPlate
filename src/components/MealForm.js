@@ -49,8 +49,8 @@ const MealForm = () => {
                 cleanedValues[item] = formValues[item];
             }
         }
-        console.log("Form Values:")
-        console.log(cleanedValues);
+        // console.log("Form Values:")
+        // console.log(cleanedValues);
         writeMealData(cleanedValues);
     }
 
@@ -61,8 +61,8 @@ const MealForm = () => {
                 foodItems[item] = formInput[item];
             }
         }
-        console.log("Food Items:")
-        console.log(foodItems);
+        // console.log("Food Items:")
+        // console.log(foodItems);
         firebase.database().ref(`group/${user.group}/date/${formInput.date}/${formInput.name}`).set(foodItems);
     }
 

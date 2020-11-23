@@ -5,13 +5,13 @@ import 'firebase/auth';
 let getSignUp = async (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
     .then((user) => {
-        console.log(user.uid);
+        // console.log(user.uid);
         return user.uid;
     })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode + errorMessage);
+        // console.log(errorCode + errorMessage);
         alert('This user already exists.');
     });
   };

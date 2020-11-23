@@ -12,8 +12,8 @@ const cookies = new Cookies();
 const Profile = () => {
 
     let uid = cookies.get('uid');
-    console.log('uid');
-    console.log(uid);
+    // console.log('uid');
+    // console.log(uid);
     
     let cardUser = useUser(uid);
 
@@ -21,9 +21,9 @@ const Profile = () => {
         return null;
     } else {
 
-        console.log("uid:" + uid);
-        console.log("cardUser:");
-        console.log(cardUser);
+        // console.log("uid:" + uid);
+        // console.log("cardUser:");
+        // console.log(cardUser);
 
         let picture_string = profilePicSwitch(cardUser.pic);
 
@@ -31,29 +31,29 @@ const Profile = () => {
 
         const handleEditPic = (num) => {
             firebase.database().ref(`users/${uid}/pic`).set(num).then(() => {
-                console.log('Profile Pic Change Successful');
+                // console.log('Profile Pic Change Successful');
                 picture_string = profilePicSwitch(num);
                 window.location.reload();
             }).catch((error) => {
-                console.log("Make sure you're logged into your account to change your profile picture!");
+                // console.log("Make sure you're logged into your account to change your profile picture!");
             });
         }
 
         const handleEditName = (name) => {
             firebase.database().ref(`users/${uid}/name`).set(name).then(() => {
-                console.log('Profile Pic Change Successful');
+                // console.log('Profile Pic Change Successful');
                 window.location.reload();
             }).catch((error) => {
-                console.log("Make sure you're logged into your account to change your profile picture!");
+                // console.log("Make sure you're logged into your account to change your profile picture!");
             });
         }
 
         const handleEditGroup = (group) => {
             firebase.database().ref(`users/${uid}/group`).set(group).then(() => {
-                console.log('Profile Pic Change Successful');
+                // console.log('Profile Pic Change Successful');
                 window.location.reload();
             }).catch((error) => {
-                console.log("Make sure you're logged into your account to change your profile picture!");
+                // console.log("Make sure you're logged into your account to change your profile picture!");
             });
         }
 

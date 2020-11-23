@@ -32,7 +32,7 @@ let DayCard = ({
             </Card>
         );
     }
-    console.log(meals)
+    // console.log(meals)
     let eventkey = "0";
     return (
         // <Card style={{ width: '20rem' }}>

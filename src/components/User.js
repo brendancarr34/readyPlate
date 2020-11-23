@@ -10,7 +10,7 @@ import 'firebase/database';
 import useUser from '../hooks/userHooks.js'
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
-console.log(cookies.get('uid'));
+// console.log(cookies.get('uid'));
 
 let User = () => {
 
@@ -30,8 +30,8 @@ let User = () => {
   let uid = "";
 
   uid = cookies.get('uid');
-  console.log('uid:');
-  console.log(uid);
+  // console.log('uid:');
+  // console.log(uid);
 
   if (uid === undefined) {
     window.location.href = '/#/login';
@@ -63,10 +63,10 @@ let User = () => {
         <DayCard cardDate={week[index]} cardGroup={cardUser.group} />
       </Col>
     ));
-    console.log("user:")
-    console.log(cardUser.group);
-    console.log("dates:")
-    console.log(week);
+    // console.log("user:")
+    // console.log(cardUser.group);
+    // console.log("dates:")
+    // console.log(week);
     return (  
       <div>
           <Row>

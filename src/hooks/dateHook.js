@@ -5,7 +5,7 @@ let getDates = async (cardUser) => {
     if(cardUser) {
         let meals = firebase.database().ref(`group/${cardUser.group}/date`);
         return meals.once("value").then(function(snapshot) {
-            console.log(snapshot.val());
+            // console.log(snapshot.val());
             return snapshot.val();
         });
     } else {
@@ -26,7 +26,7 @@ let getDates = async (cardUser) => {
             getAndSetDate();
         }
     }, [cardUser])
-    console.log(dates);
+    // console.log(dates);
     return dates;
   }
 

@@ -40,7 +40,7 @@ function SignUp () {
             userDefined = true;
             let profilePic = Math.floor(Math.random() * 15)
             if (formValues.group && uid && clickedSubmit) {
-                console.log(formValues);
+                // console.log(formValues);
                 firebase.database().ref(`users/${uid}`).set({
                     group: formValues.group,
                     name: formValues.fName + " " + formValues.lName,
@@ -48,14 +48,14 @@ function SignUp () {
                     // school: formValues.school,
                     pic: profilePic
                 }).then(() => {
-                    console.log('Sign-Up successful');
+                    // console.log('Sign-Up successful');
                     reload();
                 }).catch((error) => {
-                    console.log('Writing user data to database unsuccessful');
+                    // console.log('Writing user data to database unsuccessful');
                 });
             }
         } else {
-            console.log("Not Signed In");
+            // console.log("Not Signed In");
         }
         });
 

@@ -20,7 +20,7 @@ function Header() {
       cookies.remove('uid');
       window.location.href = "/#/login";
     }).catch(function(error) {
-      console.log("Logout didn't work");
+      // console.log("Logout didn't work");
     });
   }
 
@@ -30,10 +30,10 @@ function Header() {
     return null;
   } else {
     let editButton = <p hidden></p>; 
-    console.log('user type:');
-    console.log(user.type);
-    console.log('user:');
-    console.log(user);
+    // console.log('user type:');
+    // console.log(user.type);
+    // console.log('user:');
+    // console.log(user);
     if (user.type !== "user") {
         editButton = <Nav.Link href="/#/chef">Plate Editor</Nav.Link>;
     }
@@ -49,7 +49,7 @@ function Header() {
           <Nav.Link href="/">Home</Nav.Link>
           {editButton}
         </Nav>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title={user.name}>
+        <DropdownButton variant="secondary" id="dropdown-basic-button" title="">
           <Dropdown.Item disabled='true'>
             <Image src={pictureString} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>

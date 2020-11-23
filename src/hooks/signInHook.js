@@ -5,12 +5,12 @@ import 'firebase/auth';
 let getSignIn = async (user) => {
     return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
     .then((user) => {
-        console.log(user);
+        // console.log(user);
     })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode + errorMessage);
+        // console.log(errorCode + errorMessage);
         alert('Wrong Username or Password');
     });
   };

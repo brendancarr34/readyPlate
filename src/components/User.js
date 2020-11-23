@@ -71,7 +71,7 @@ let User = () => {
               <Button variant="secondary" className="float-right" onClick={() => {addOneWeek()}}>Next Week</Button>
             </Col>
           </Row>
-          <Row>
+          <Row style={{paddingLeft:'2%',paddingRight:'2%'}}>
             {weeklyPlates}
           </Row>
       </div>

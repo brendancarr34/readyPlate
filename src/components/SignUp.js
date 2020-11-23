@@ -34,12 +34,14 @@ function SignUp () {
         if (user && !userDefined) {
             uid = user.uid;
             userDefined = true;
+            let profilePic = Math.floor(Math.random() * 15)
             if (formValues.group && uid && clickedSubmit) {
                 console.log(formValues);
                 firebase.database().ref(`users/${uid}`).set({
                     group: formValues.group,
                     name: formValues.fName + " " + formValues.lName,
-                    type: formValues.type
+                    type: formValues.type,
+                    pic: profilePic
                 }).then(() => {
                     console.log('Sign-Up successful');
                     reload();
@@ -66,7 +68,7 @@ function SignUp () {
                         </div>
                     </Col>
                     <Col style={{backgroundColor:'skyblue'}}>
-                        <div>
+                        <div style = {{paddingTop:'5%'}}>
                             <Image src={require("../static/readyplate-logo-only.png")} fluid/>
                         </div>
                         <Form style={{paddingTop:'2%', paddingBottom: '2%', flex: 1, height: "1"}}>

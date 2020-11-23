@@ -7,7 +7,10 @@ import useUser from '../hooks/userHooks.js'
 
 
 const MealForm = () => {
-    const user = useUser();
+    
+    let temp_user = firebase.auth().currentUser
+    let uid = temp_user.uid;
+    const user = useUser(uid);
     // Get form values from field and add to object of form values
     const [formValues, setFormValues] = useState({});
     const updateFormValues = (updateObject) => {

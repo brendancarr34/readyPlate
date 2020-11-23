@@ -57,7 +57,7 @@ const Profile = () => {
             });
         }
 
-        let profilePic = <Image src={picture_string} style={{height: '200px', width: '200px'}} alt='pf' fluid/>;
+        let profilePic = <Image src={picture_string} style={{height: '200px', width: '200px'}} alt='pf'/>;
         
         return (
             <div style = {{paddingTop:'3%'}}>

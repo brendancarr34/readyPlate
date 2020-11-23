@@ -33,6 +33,10 @@ let User = () => {
   console.log('uid:');
   console.log(uid);
 
+  if (uid === undefined) {
+    window.location.href = '/#/login';
+  };
+
   const cardUser = useUser(uid);
   // set default of week to current date and add modifiers
   const [week, setWeek] = useState(getWeek(new Date(today.getFullYear(), today.getMonth(), today.getDate())));

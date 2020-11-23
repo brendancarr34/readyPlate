@@ -35,7 +35,7 @@ function Login () {
           console.log(cookies.get('uid'));
           window.location.href = '/';
         } else {
-          console.log("Didn't work");
+            console.log("Didn't work");
         }
       });
       

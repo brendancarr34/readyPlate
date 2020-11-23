@@ -17,6 +17,7 @@ function Header() {
 
   const logout = () => {
     firebase.auth().signOut().then(function() {
+      cookies.remove('uid');
       window.location.href = "/#/login";
     }).catch(function(error) {
       console.log("Logout didn't work");

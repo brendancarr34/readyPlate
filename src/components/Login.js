@@ -4,6 +4,8 @@ import getSignIn from '../hooks/signInHook.js'
 import firebase from 'firebase';
 import auth from 'firebase/auth';
 import useUser from '../hooks/userHooks.js';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export let user = {};
 let userDefined = false;
@@ -28,6 +30,8 @@ function Login () {
         if (user) {
           uid = user.uid;
           userDefined = true;
+          cookies.set('uid', uid, { path: '/' });
+          console.log(cookies.get('uid'));
           window.location.href = '/';
         } else {
           console.log("Didn't work");
@@ -37,7 +41,7 @@ function Login () {
       let userObj = useUser(uid);
 
       if(userDefined) {
-        user = Object.entries(userObj)[0][1];
+        user = userObj;
       }
     return (
         <div>

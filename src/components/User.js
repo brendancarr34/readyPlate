@@ -8,8 +8,9 @@ import { dates, group } from '../stores.js';
 import firebase from "firebase/app";
 import 'firebase/database';
 import useUser from '../hooks/userHooks.js'
-// TO-DO remove this line once pulled from db
-// let cardGroup = group;
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+console.log(cookies.get('uid'));
 
 let User = () => {
 
@@ -27,13 +28,10 @@ let User = () => {
   const today = new Date();
 
   let uid = "";
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      uid = user.uid;
-    } else {
-        window.location.href="/#/login";
-    }
-  });
+
+  uid = cookies.get('uid');
+  console.log('uid:');
+  console.log(uid);
 
   const cardUser = useUser(uid);
   // set default of week to current date and add modifiers
@@ -52,15 +50,17 @@ let User = () => {
 
   if(!cardUser) {
     return null;
-  } else {
+  } else { 
+// TO-DO remove this line once pulled from db
+// let cardGroup = group;
     // Generate weeklyPlates based on week array
     const weeklyPlates = (new Array(week.length)).fill(0).map((item, index) => (
       <Col sm>
-        <DayCard cardDate={week[index]} cardGroup={Object.entries(cardUser)[0][1].group} />
+        <DayCard cardDate={week[index]} cardGroup={cardUser.group} />
       </Col>
     ));
     console.log("user:")
-    console.log(Object.entries(cardUser)[0][1].group);
+    console.log(cardUser.group);
     console.log("dates:")
     console.log(week);
     return (  

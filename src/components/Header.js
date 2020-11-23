@@ -6,8 +6,15 @@ import { useLocation } from 'react-router-dom';
 import { Image, DropdownButton, Dropdown} from 'react-bootstrap';
 import firebase from 'firebase';
 import auth from 'firebase/auth';
+import useUser from '../hooks/userHooks.js'
+import Cookies from 'universal-cookie';
+import profilePicSwitch from '../hooks/profilePicHook';
 
 function Header() {
+  const cookies = new Cookies();
+  const uid = cookies.get('uid');
+  const user = useUser(uid);
+
   const logout = () => {
     firebase.auth().signOut().then(function() {
       window.location.href = "/#/login";
@@ -16,18 +23,20 @@ function Header() {
     });
   }
 
-  // const plateEditor = () => {
-  //   if (user.type !== "user") {
-  //     return (
-  //         <Nav.Link href="/chef">Plate Editor</Nav.Link>
-  //     )
-  //   } else return null;
-  // }
   let link = document.location.pathname;
 
-  if (link.includes('login') || link.includes('signup')) {
+  if (!user || link.includes('login') || link.includes('signup')) {
     return null;
   } else {
+    let editButton = <p hidden></p>; 
+    console.log('user type:');
+    console.log(user.type);
+    console.log('user:');
+    console.log(user);
+    if (user.type !== "user") {
+        editButton = <Nav.Link href="/#/chef">Plate Editor</Nav.Link>;
+    }
+    const pictureString = profilePicSwitch(user.pic)
     return (
       <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/">
@@ -37,12 +46,11 @@ function Header() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          {/* {plateEditor} */}
-          <Nav.Link href="/#/chef">Plate Editor</Nav.Link>
+          {editButton}
         </Nav>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title="Information">
+        <DropdownButton variant="secondary" id="dropdown-basic-button" title="Options">
           <Dropdown.Item disabled='true'>
-            <Image src={require("../static/profilepic.png")} width='50px' height='50px' alt='pf'/>
+            <Image src={pictureString} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>
           <Dropdown.Item href="/#/profile">Profile</Dropdown.Item>
           <Dropdown.Item onClick={() => {logout()}}>Logout</Dropdown.Item>

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
+import {Image, Form, Col, Row, Container, Button, ButtonGroup } from 'react-bootstrap';
 import getSignUp from '../hooks/signUpHook.js'
 import SchoolSearch from './SchoolSearch.js';
 import firebase from 'firebase';
 import database from 'firebase/database'
 import useUser from '../hooks/userHooks.js'
+import Cookies from 'universal-cookie';
+
 
 
 function SignUp () {
+    const cookies = new Cookies();
     const [formValues, setFormValues] = useState({});
     const updateFormValues = (updateObject) => {
         setFormValues({
@@ -33,6 +36,7 @@ function SignUp () {
     firebase.auth().onAuthStateChanged((user) => {
         if (user && !userDefined) {
             uid = user.uid;
+            cookies.set('uid', uid, { path: '/' });
             userDefined = true;
             let profilePic = Math.floor(Math.random() * 15)
             if (formValues.group && uid && clickedSubmit) {
@@ -41,6 +45,7 @@ function SignUp () {
                     group: formValues.group,
                     name: formValues.fName + " " + formValues.lName,
                     type: formValues.type,
+                    // school: formValues.school,
                     pic: profilePic
                 }).then(() => {
                     console.log('Sign-Up successful');
@@ -72,7 +77,7 @@ function SignUp () {
                             <Image src={require("../static/readyplate-logo-only.png")} fluid/>
                         </div>
                         <Form style={{paddingTop:'2%', paddingBottom: '2%', flex: 1, height: "1"}}>
-                            <Form.Group controlId="formName">
+                            <Form.Group>
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control type="text" placeholder="First Name" onChange={getHandleFieldChange('fName')}/>
                                 <Form.Label>Last Name</Form.Label>
@@ -87,12 +92,10 @@ function SignUp () {
                                 <Form.Control type="password" placeholder="Enter Password" onChange={getHandleFieldChange('password')}/>
                             </Form.Group>
                             <SchoolSearch onChange={getHandleFieldChange('school')}/>
-                            <Form.Group controlId="formType">
+                            <Form.Group controlId="formType" style={{marginTop:'2%'}}>
                                 <Form.Label>User type</Form.Label>
-                                <Form.Control type="text" placeholder="user or chef?" onChange={getHandleFieldChange('type')}/>
-                                <Form.Text id="typeHelpBlock" muted>
-                                    Either enter user or chef (all lowercase!)
-                                </Form.Text>
+                                <Form.Check type="radio" label="user" name="userTypes" value="user" onChange={getHandleFieldChange('type')}/>
+                                <Form.Check type="radio" label="chef" name="userTypes" value="chef" onChange={getHandleFieldChange('type')}/>
                             </Form.Group>
                             <Form.Group controlId="formGroup">
                                 <Form.Label>Group Code</Form.Label>

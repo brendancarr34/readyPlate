@@ -1,11 +1,12 @@
 //import { user } from 'firebase-functions/lib/providers/auth';
 import React from 'react';
-import {Image, Form, Col, Row, Container, Button, Jumbotron } from 'react-bootstrap';
+import {Image, Form, Col, Row, Container, DropdownButton, Dropdown, Button} from 'react-bootstrap';
 import useUser from '../hooks/userHooks.js';
 //import firebase from 'firebase';
 import firebase from "firebase/app";
 import auth from 'firebase/auth';
 import Cookies from 'universal-cookie';
+import profilePicSwitch from '../hooks/profilePicHook.js'
 const cookies = new Cookies();
 
 const Profile = () => {
@@ -15,7 +16,7 @@ const Profile = () => {
     console.log(uid);
     
     let cardUser = useUser(uid);
-    
+
     if(!cardUser) {
         return null;
     } else {
@@ -24,26 +25,39 @@ const Profile = () => {
         console.log("cardUser:");
         console.log(cardUser);
 
-        let picture_string = "../static/profilepic.png";
-        switch (cardUser.profilePic) {
-            case 1: 
-                picture_string = require("../static/profilePics/disguise.png"); break;
-            case 2:
-                picture_string = require("../static/profilePics/goofy.png");    break;
-            case 3:
-                picture_string = require("../static/profilePics/money-tongue.png"); break;
-            case 4:
-                picture_string = require("../static/profilePics/purpleDevil.png");  break;
-            case 5:
-                picture_string = require("../static/profilePics/star-eyes.png"); break;
-            case 6:
-                picture_string = require("../static/profilePics/sunglasses-smile.png"); break;
-            case 7:
-                picture_string = require("../static/profilePics/winking-tongue.png");   break;
-            default:
-                picture_string = "../static/profilepic.png";
+        let picture_string = profilePicSwitch(cardUser.pic);
+
+        const picArr = Array.from({length: 8}, (_, i) => i + 1);
+
+        const handleEditPic = (num) => {
+            firebase.database().ref(`users/${uid}/pic`).set(num).then(() => {
+                console.log('Profile Pic Change Successful');
+                picture_string = profilePicSwitch(num);
+                window.location.reload();
+            }).catch((error) => {
+                console.log("Make sure you're logged into your account to change your profile picture!");
+            });
         }
-        console.log(picture_string);
+
+        const handleEditName = (name) => {
+            firebase.database().ref(`users/${uid}/name`).set(name).then(() => {
+                console.log('Profile Pic Change Successful');
+                window.location.reload();
+            }).catch((error) => {
+                console.log("Make sure you're logged into your account to change your profile picture!");
+            });
+        }
+
+        const handleEditGroup = (group) => {
+            firebase.database().ref(`users/${uid}/group`).set(group).then(() => {
+                console.log('Profile Pic Change Successful');
+                window.location.reload();
+            }).catch((error) => {
+                console.log("Make sure you're logged into your account to change your profile picture!");
+            });
+        }
+
+        let profilePic = <Image src={picture_string} style={{height: '200px', width: '200px'}} alt='pf' fluid/>;
         
         return (
             <div style = {{paddingTop:'3%'}}>
@@ -51,24 +65,25 @@ const Profile = () => {
                     <Row xs = {1} style={{flex:'1'}}>
                         <Col xs={4} md={2} style={{justifyContent:'center', flex:'1'}}>
                             <div>
-                                <Image src={picture_string} alt='pf' fluid/>
+                                {profilePic}
                             </div>
                             <div style={{paddingTop:'20%', paddingLeft:'5%'}}>
-                                <Button variant = 'secondary' size='sm'>
-                                    Edit Profile Picture
-                                </Button>
+                                <DropdownButton variant = 'secondary' drop="right" size='sm' title="Edit Picture">
+                                    {picArr.map((num) => (
+                                        <Dropdown.Item eventKey={num} onClick={() => {handleEditPic(num)}}><Image style={{height: "60px", width: "60px"}} src={profilePicSwitch(num)}></Image></Dropdown.Item>
+                                    ))}
+                                </DropdownButton>
                             </div>
                         </Col>
                         <Col md="auto">
-                                
-    
                             <div style={{paddingLeft:'20%',display:'inline'}}>
                                 <h1>Name: {cardUser.name}</h1>
                                 <h3>Group: {cardUser.group}</h3>
+                                <h3>Type: {cardUser.type}</h3>
                             </div>
                         </Col>
                         <Col>
-    
+
                         </Col>
                     </Row>
               </Container> 

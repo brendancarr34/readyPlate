@@ -4,8 +4,8 @@ import useSearch from '../hooks/searchHook.js';
 import { debounce } from "throttle-debounce";
 
 let SchoolSearch = () => {
-    // auto search for schools and update dropdown list respectively 
 
+    // auto search for schools and update dropdown list respectively 
     const [searchValue, setSearchValue] = useState("");
     
     const updateSearchValue = (updateString) => {
@@ -42,6 +42,10 @@ let SchoolSearch = () => {
         const newValue = event.target.value;
         updateSeletedSchool(newValue);
     };
+
+    const getSelectedSchool = () => {
+        return selectedSchool;
+    }
     
     return (
         <div>

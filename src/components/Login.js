@@ -5,12 +5,13 @@ import firebase from 'firebase';
 import auth from 'firebase/auth';
 import useUser from '../hooks/userHooks.js';
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
-export let user = {};
-let userDefined = false;
 
 function Login () {
+    const cookies = new Cookies();
+
+    let user = {};
+    let userDefined = false;
     const [formValues, setFormValues] = useState({});
     const updateFormValues = (updateObject) => {
         setFormValues({

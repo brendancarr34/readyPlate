@@ -49,7 +49,7 @@ function Header() {
           <Nav.Link href="/">Home</Nav.Link>
           {editButton}
         </Nav>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title="Options">
+        <DropdownButton variant="secondary" id="dropdown-basic-button" title={user.name}>
           <Dropdown.Item disabled='true'>
             <Image src={pictureString} width='50px' height='50px' alt='pf'/>
           </Dropdown.Item>
